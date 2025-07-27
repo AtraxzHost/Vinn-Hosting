@@ -5,40 +5,10 @@
   <title>Server Siap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      background: #0f172a;
-      color: white;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .output {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 100%;
-    }
-    pre {
-      background: #334155;
-      padding: 10px;
-      border-radius: 8px;
-      white-space: pre-wrap;
-    }
-    button {
-      margin-top: 10px;
-      width: 100%;
-      padding: 12px;
-      background: #3b82f6;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+    body { background: #0f172a; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .output { background: #1e293b; padding: 25px; border-radius: 12px; max-width: 400px; width: 100%; }
+    pre { background: #334155; padding: 10px; border-radius: 8px; white-space: pre-wrap; }
+    button { margin-top: 10px; width: 100%; padding: 12px; background: #3b82f6; color: white; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -47,11 +17,9 @@
     <pre id="info">Memuat...</pre>
     <button onclick="salin()">📋 Salin Informasi</button>
   </div>
-
   <script>
     const data = JSON.parse(localStorage.getItem('akunInfo') || '{}');
     const infoBox = document.getElementById('info');
-
     if (data.username) {
       infoBox.textContent = `
 Username: ${data.username}
@@ -63,7 +31,6 @@ Tanggal: ${data.tanggal}
     } else {
       infoBox.textContent = '❌ Data akun tidak ditemukan.';
     }
-
     function salin() {
       navigator.clipboard.writeText(infoBox.textContent)
         .then(() => alert("✅ Disalin ke clipboard!"));

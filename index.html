@@ -5,36 +5,10 @@
   <title>Verifikasi Token</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      background: #0f172a;
-      color: white;
-      font-family: sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .container {
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 400px;
-    }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: none;
-    }
-    button {
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
-    }
+    body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+    .container { background: #1e293b; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; }
+    input, button { width: 100%; padding: 12px; font-size: 16px; margin-top: 10px; border-radius: 8px; border: none; }
+    button { background: #2563eb; color: white; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -43,7 +17,6 @@
     <input id="token" placeholder="Token kamu..." />
     <button onclick="cekToken()">Verifikasi</button>
   </div>
-
   <script>
     function cekToken() {
       const token = document.getElementById('token').value.trim();

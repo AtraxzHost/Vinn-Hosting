@@ -5,36 +5,10 @@
   <title>Create Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      background: #0f172a;
-      color: white;
-      font-family: sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .form {
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 400px;
-    }
-    input, select, button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-    }
-    button {
-      background: #22c55e;
-      color: white;
-      cursor: pointer;
-    }
+    body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+    .form { background: #1e293b; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; }
+    input, select, button { width: 100%; padding: 12px; margin-top: 10px; font-size: 16px; border-radius: 8px; border: none; }
+    button { background: #22c55e; color: white; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -49,25 +23,26 @@
     </select>
     <button onclick="buatServer()">Buat Sekarang</button>
   </div>
-
   <script>
     async function buatServer() {
       const username = document.getElementById('username').value.trim();
       const plan = document.getElementById('plan').value;
       if (!username) return alert('Masukkan username!');
-
-      const res = await fetch('/api/buat-server', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ username, plan })
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        localStorage.setItem('akunInfo', JSON.stringify(data.result));
-        window.location.href = '/hasil.html';
-      } else {
-        alert('❌ Gagal buat server: ' + data.message);
+      try {
+        const res = await fetch('/api/buat-server', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, plan })
+        });
+        const data = await res.json();
+        if (data.success) {
+          localStorage.setItem('akunInfo', JSON.stringify(data.result));
+          window.location.href = '/hasil.html';
+        } else {
+          alert('❌ Gagal buat server: ' + data.message);
+        }
+      } catch {
+        alert('❌ Tidak bisa terhubung ke API.');
       }
     }
   </script>
