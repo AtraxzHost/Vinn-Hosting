@@ -10,8 +10,8 @@ export default async function handler(req, res) {
 
   // Konfigurasi API Pterodactyl Panel
   const PANEL_URL = 'https://denishost.zizz.my.id';
-  const API_KEY = 'ptla_uSEuBZL9yhiXbZ3rGmxeE2JNm4MztncluJnTExSnzmX';
-  const CA_KEY = 'ptlc_JuPl3uZUFxJ4epIgDE37YTzNVPOO6og4zpzEfo3tQJh';
+  const API_KEY = 'ptla_spe3Prqu65Ij9gy2irHku9wDaIo9aRzSOE0X26uwoS9';
+  const CA_KEY = 'ptlc_V1hccpct4WWhlWKQfy1qAdE57wQJNQT01VEyhY102nb';
 
   const planMap = {
     '1gb': { ram: 1024, disk: 1024, cpu: 100 },
