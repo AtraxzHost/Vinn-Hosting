@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-box {
+      background-color: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #22c55e;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Buat Panel Pterodactyl</h2>
+    <form action="/buat-server" method="POST">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="Masukkan Username" required>
+
+      <label for="plan">Pilih Plan</label>
+      <select name="plan" id="plan" required>
+        <option value="1gb">1GB</option>
+        <option value="2gb">2GB</option>
+        <option value="4gb">4GB</option>
+        <option value="unli">UNLIMITED</option>
+      </select>
+
+      <button type="submit">Buat Server</button>
+    </form>
+  </div>
+</body>
+</html>
