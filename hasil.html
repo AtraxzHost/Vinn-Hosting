@@ -2,43 +2,37 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Server Berhasil Dibuat</title>
+  <title>Server Siap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0f172a;
+      background: #0f172a;
       color: white;
+      font-family: sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
     }
-    .box {
-      background-color: #1e293b;
+    .output {
+      background: #1e293b;
       padding: 25px;
       border-radius: 12px;
-      max-width: 450px;
-      width: 90%;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 15px;
+      max-width: 400px;
+      width: 100%;
     }
     pre {
-      background-color: #334155;
-      padding: 15px;
+      background: #334155;
+      padding: 10px;
       border-radius: 8px;
       white-space: pre-wrap;
-      word-wrap: break-word;
     }
     button {
       margin-top: 10px;
       width: 100%;
       padding: 12px;
-      background-color: #3b82f6;
+      background: #3b82f6;
       color: white;
       font-size: 16px;
       border: none;
@@ -48,24 +42,31 @@
   </style>
 </head>
 <body>
-  <div class="box">
-    <h2>✅ Server Berhasil Dibuat</h2>
-    <pre id="akun-info">
-Username: hunteraja
-Password: hunter123
-Login Panel: https://denishost.zizz.my.id
-Plan: 1GB
-Tanggal: 27 Juli 2025
-    </pre>
-    <button onclick="copyAkun()">Salin Informasi Akun</button>
+  <div class="output">
+    <h2>✅ Server Kamu Siap!</h2>
+    <pre id="info">Memuat...</pre>
+    <button onclick="salin()">📋 Salin Informasi</button>
   </div>
 
   <script>
-    function copyAkun() {
-      const text = document.getElementById('akun-info').innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("✅ Informasi akun berhasil disalin!");
-      });
+    const data = JSON.parse(localStorage.getItem('akunInfo') || '{}');
+    const infoBox = document.getElementById('info');
+
+    if (data.username) {
+      infoBox.textContent = `
+Username: ${data.username}
+Password: ${data.password}
+Login: ${data.loginURL}
+Plan: ${data.plan}
+Tanggal: ${data.tanggal}
+      `.trim();
+    } else {
+      infoBox.textContent = '❌ Data akun tidak ditemukan.';
+    }
+
+    function salin() {
+      navigator.clipboard.writeText(infoBox.textContent)
+        .then(() => alert("✅ Disalin ke clipboard!"));
     }
   </script>
 </body>
